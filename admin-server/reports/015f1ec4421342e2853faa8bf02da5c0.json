@@ -1,0 +1,27 @@
+{
+  "session_id": "sess_week2_api_test",
+  "employee_id": "EMP001",
+  "generated_at": "2026-08-17T22:54:39.054431+00:00",
+  "session_analysis": {
+    "summary": "Test Employee spent 1 minute working on Code.exe",
+    "productivity_assessment": "productive",
+    "key_activities": [
+      "Code.exe"
+    ],
+    "focus_observations": [
+      "100% of session focused on Code.exe"
+    ],
+    "recommended_follow_up": []
+  },
+  "knowledge": {
+    "vector_id": 1,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "indexed": true
+  },
+  "security": {
+    "risk_score": 0,
+    "alerts": [],
+    "assessment": "no_data_integrity_alerts"
+  },
+  "errors": []
+}

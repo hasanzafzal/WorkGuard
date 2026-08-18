@@ -1,0 +1,28 @@
+{
+  "session_id": "sess_week2_api_test",
+  "employee_id": "EMP001",
+  "received_at": "2026-08-17T22:54:16.198110+00:00",
+  "session": {
+    "session_id": "sess_week2_api_test",
+    "employee_id": "EMP001",
+    "employee_name": "Test Employee",
+    "session": {
+      "duration_seconds": 60
+    },
+    "events": [
+      {
+        "event_type": "application_focused",
+        "data": {
+          "process_name": "Code.exe"
+        }
+      }
+    ],
+    "focus_summary": {
+      "Code.exe": 60
+    },
+    "metadata": {
+      "schema_version": "1.0",
+      "created_at": "2026-08-17T20:01:00+00:00"
+    }
+  }
+}

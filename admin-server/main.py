@@ -13,10 +13,11 @@ from pathlib import Path
 from typing import Literal
 
 from cryptography.exceptions import InvalidTag
-from fastapi import FastAPI, HTTPException
+from fastapi import BackgroundTasks, FastAPI, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
 
 from security.encryption import decrypt_session, key_from_base64
+from ai.processor import process_verified_session
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -136,7 +137,10 @@ def save_json(directory: Path, filename: str, data: dict) -> None:
 
 
 @app.post("/api/v1/sessions", response_model=ReceiveResponse, status_code=201)
-def receive_session(payload: SessionTransmission) -> ReceiveResponse:
+def receive_session(
+    payload: SessionTransmission,
+    background_tasks: BackgroundTasks,
+) -> ReceiveResponse:
     """Verify and persist one encrypted employee session package."""
 
     try:
@@ -167,6 +171,7 @@ def receive_session(payload: SessionTransmission) -> ReceiveResponse:
 
     save_json(RECEIVED_SESSIONS_DIR, filename, saved_payload)
     save_json(VERIFIED_SESSIONS_DIR, filename, saved_verified_session)
+    background_tasks.add_task(process_verified_session, decrypted_session)
 
     return ReceiveResponse(
         status="received",
