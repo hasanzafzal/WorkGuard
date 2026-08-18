@@ -1,0 +1,120 @@
+{
+  "session_id": "sess_a3c10ce23046",
+  "employee_id": "EMP001",
+  "employee_name": "Robot Khan",
+  "session": {
+    "start_time": "2026-08-17T20:20:52.478763+00:00",
+    "end_time": "2026-08-17T20:21:31.034349+00:00",
+    "duration_seconds": 38
+  },
+  "events": [
+    {
+      "event_id": "evt_f142080bee15",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:20:52+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_91519ce5ddc6",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:22+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_f6721c322157",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:22+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_2c7c68eb9feb",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:23+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_098e68457a07",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:23+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_dd8b748deea4",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:24+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_26f6bd5a9b55",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:24+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_ace6d75708a1",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:25+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_2b6cb93a5016",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:27+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_4c3dd7ed4b6e",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T20:21:31+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    }
+  ],
+  "focus_summary": {
+    "Code.exe": 35.0,
+    "explorer.exe": 2.0
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "created_at": "2026-08-17T20:21:32.042405+00:00"
+  }
+}

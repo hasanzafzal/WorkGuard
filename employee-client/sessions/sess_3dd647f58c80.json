@@ -1,0 +1,152 @@
+{
+  "session_id": "sess_3dd647f58c80",
+  "employee_id": "EMP001",
+  "employee_name": "Robot Khan",
+  "session": {
+    "start_time": "2026-08-11T05:55:58.492073+00:00",
+    "end_time": "2026-08-11T05:57:56.241743+00:00",
+    "duration_seconds": 117
+  },
+  "events": [
+    {
+      "event_id": "evt_f57c172b38d3",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:55:58.492073+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_2eb011333ea3",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:56:10.604017+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_d1742513f4cc",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:56:10.604017+00:00",
+      "data": {
+        "pid": 15948,
+        "process_name": "firefox.exe"
+      }
+    },
+    {
+      "event_id": "evt_e7967d4844f9",
+      "event_type": "application_started",
+      "source": "psutil",
+      "timestamp": "2026-08-11T05:56:12.586077+00:00",
+      "data": {
+        "pid": 15948,
+        "process_name": "firefox.exe",
+        "executable": "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
+      }
+    },
+    {
+      "event_id": "evt_dca4ba2c15c3",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:56:16.695462+00:00",
+      "data": {
+        "pid": 15948,
+        "process_name": "firefox.exe"
+      }
+    },
+    {
+      "event_id": "evt_c9136bb3510f",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:56:22.731122+00:00",
+      "data": {
+        "pid": 6020,
+        "process_name": "chrome.exe"
+      }
+    },
+    {
+      "event_id": "evt_304b9c86bfbd",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:57:02.090136+00:00",
+      "data": {
+        "pid": 6020,
+        "process_name": "chrome.exe"
+      }
+    },
+    {
+      "event_id": "evt_6cfe781e20fc",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:57:03.104349+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_5737418de89c",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:57:22.293995+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_d49f25d208c0",
+      "event_type": "file_modified",
+      "source": "watchdog",
+      "timestamp": "2026-08-11T05:57:28.866919+00:00",
+      "data": {
+        "path": "E:/Monitoring Test\\test 1.txt",
+        "extension": ".txt"
+      }
+    },
+    {
+      "event_id": "evt_5a4ad288848c",
+      "event_type": "file_modified",
+      "source": "watchdog",
+      "timestamp": "2026-08-11T05:57:47.534522+00:00",
+      "data": {
+        "path": "E:/Monitoring Test\\test 1.txt",
+        "extension": ".txt"
+      }
+    },
+    {
+      "event_id": "evt_c31c5b5abc4d",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:57:51.501292+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_5b27309e01ab",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T05:57:56.241110+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    }
+  ],
+  "focus_summary": {
+    "Code.exe": 36.0,
+    "firefox.exe": 6.1,
+    "chrome.exe": 39.4
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "created_at": "2026-08-11T05:57:57.262865+00:00"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "session_id": "sess_admin_decryption_test",
+  "employee_id": "EMP001",
+  "created_at": "2026-08-17T20:01:00+00:00",
+  "encryption": {
+    "algorithm": "AES-256-GCM",
+    "nonce": "ZNdu4NTWE7fbY1Sz",
+    "ciphertext": "JODwEJLVWi+dijKs58qZpllFTPG0Qxd22XrxIfULy8EBzGPdnbK7oYCgdLc/0mhAYqqZurLQc3Cv+9yJCur82KFJteELuZKsna5GOYZgq3uXsIGqcUWEleCY2+vp4DJmkpC7wjhPL+cT910yPr7NnERebyHghq/7Y2jZ08PHNj8+u/bpGnu5GpVjswqYUxqNXHUcilbyEqS7lXfOktSA8TatbDqHCOhFb3QESZ4z81Qpb75gcAbPqcYsKRgjf00ftfgquRed4L6JljZbRnlxb3acd579ghcupl+TH3nzO9hT5Bf53smR+M3gPMiVNmzRqWQBbbaztopV5jz8L1tMkmSYjZZTF6n4Y5QX25EIy1tdjykAb4yCP1W8ooLR7educIEOZB6iq6cmdscbefnPQeXi8ZGanY561tPs/FofUJjw4KVLQV8Xg2BF5XnsFEaxHdmY1XfiLITRbQSJ7qtvPbFKAtxt",
+    "session_id": "sess_admin_decryption_test"
+  },
+  "received_at": "2026-08-17T21:14:28.461148+00:00"
+}

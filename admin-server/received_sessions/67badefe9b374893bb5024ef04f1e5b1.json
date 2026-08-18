@@ -1,0 +1,12 @@
+{
+  "session_id": "sess_network_client_test",
+  "employee_id": "EMP001",
+  "created_at": "2026-08-17T20:38:34+00:00",
+  "encryption": {
+    "algorithm": "AES-256-GCM",
+    "nonce": "1CFn0hDNbb/Rd0A0",
+    "ciphertext": "aYea50WD+EqmNE270J6z7a6yqHRjixCUF4kwZ/ZHZlTEvIlWslW5pcDQJNkGnSGMNHoayBcVwz1Pzv/EOo4mGACvziruPvb34/Oycmp6tcgmbea1QRiiInLwxyjgK0HFlfda3qjwJR/mHE08VV66j3Xl708G2QzmADDs3bhBzl/qjC80HToR733gbpgAN1qraDPDSXjeD0P8SWVJpSdEq5Urd9zKEkE=",
+    "session_id": "sess_network_client_test"
+  },
+  "received_at": "2026-08-17T21:09:51.962327+00:00"
+}

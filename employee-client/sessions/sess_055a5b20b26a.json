@@ -1,0 +1,143 @@
+{
+  "session_id": "sess_055a5b20b26a",
+  "employee_id": "EMP001",
+  "employee_name": "Robot Khan",
+  "session": {
+    "start_time": "2026-08-17T21:15:28.130541+00:00",
+    "end_time": "2026-08-17T21:15:43.178465+00:00",
+    "duration_seconds": 15
+  },
+  "events": [
+    {
+      "event_id": "evt_a110ef61945c",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:28+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_c69bf61e5b76",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:33+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_a0e31091866c",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:34+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_c352bd0ecae5",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:36+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_f8fe1fcab551",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:36+00:00",
+      "data": {
+        "pid": 20144,
+        "process_name": "msedge.exe"
+      }
+    },
+    {
+      "event_id": "evt_1dba906fbdf9",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:41+00:00",
+      "data": {
+        "pid": 20144,
+        "process_name": "msedge.exe"
+      }
+    },
+    {
+      "event_id": "evt_07cb78dea582",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:41+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_38e1d62383e0",
+      "event_type": "application_started",
+      "source": "psutil",
+      "timestamp": "2026-08-17T21:15:41+00:00",
+      "data": {
+        "pid": 15800,
+        "process_name": "msedge.exe",
+        "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+      }
+    },
+    {
+      "event_id": "evt_78e837061de5",
+      "event_type": "application_stopped",
+      "source": "psutil",
+      "timestamp": "2026-08-17T21:15:41+00:00",
+      "data": {
+        "pid": 20144,
+        "process_name": "msedge.exe",
+        "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+      }
+    },
+    {
+      "event_id": "evt_42544270c836",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:42+00:00",
+      "data": {
+        "pid": 13968,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_1af874bc243b",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:42+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_fe622911aa6f",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-17T21:15:43+00:00",
+      "data": {
+        "pid": 22432,
+        "process_name": "Code.exe"
+      }
+    }
+  ],
+  "focus_summary": {
+    "Code.exe": 6.0,
+    "explorer.exe": 3.0,
+    "msedge.exe": 5.0
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "created_at": "2026-08-17T21:15:44.180607+00:00"
+  }
+}

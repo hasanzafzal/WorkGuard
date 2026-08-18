@@ -1,0 +1,49 @@
+{
+  "session_id": "sess_d79604c1fe48",
+  "employee_id": "EMP001",
+  "employee_name": "Robot Khan",
+  "session": {
+    "start_time": "2026-08-11T06:10:37.258202+00:00",
+    "end_time": "2026-08-11T06:10:39.288234+00:00",
+    "duration_seconds": 2
+  },
+  "events": [
+    {
+      "event_id": "evt_5c206e2db717",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T06:10:37.258202+00:00",
+      "data": {
+        "pid": 10560,
+        "process_name": "explorer.exe"
+      }
+    },
+    {
+      "event_id": "evt_60c8915d8ff6",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T06:10:37.258202+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    },
+    {
+      "event_id": "evt_4f2996fd8d59",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-08-11T06:10:39.288234+00:00",
+      "data": {
+        "pid": 1936,
+        "process_name": "Code.exe"
+      }
+    }
+  ],
+  "focus_summary": {
+    "Code.exe": 2.0
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "created_at": "2026-08-11T06:10:40.301072+00:00"
+  }
+}

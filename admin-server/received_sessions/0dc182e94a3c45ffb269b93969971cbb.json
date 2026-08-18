@@ -1,0 +1,11 @@
+{
+  "session_id": "sess_admin_server_test",
+  "employee_id": "EMP001",
+  "created_at": "2026-08-17T20:38:34+00:00",
+  "encryption": {
+    "algorithm": "AES-256-GCM",
+    "nonce": "dGVzdC1ub25jZQ==",
+    "ciphertext": "dGVzdC1jaXBoZXJ0ZXh0"
+  },
+  "received_at": "2026-08-17T21:04:46.329738+00:00"
+}
