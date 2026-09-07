@@ -1,44 +1,13 @@
 {
-  "employee_id": "EMP001",
-  "employee_name": "Robot Khan",
 
-  "monitored_applications": [
-    "Code.exe",
-    "devenv.exe",
-    "pycharm64.exe",
-    "idea64.exe",
-    "cursor.exe",
-    "sublime_text.exe",
-
-    "WindowsTerminal.exe",
-    "powershell.exe",
-    "cmd.exe",
-    "explorer.exe",
-    "notepad.exe",
-    "taskmgr.exe",
-    "notepad++.exe",
-    "mspaint.exe",
-    "CalculatorApp.exe",
-
-    "chrome.exe",
-    "msedge.exe",
-    "firefox.exe",
-
-    "WINWORD.EXE",
-    "EXCEL.EXE",
-    "Acrobat.exe",
-    "POWERPNT.EXE",
-    "FoxitPDFReader.exe"
-  ],
 
   "monitored_directories": [
-    "E:/Monitoring Test"
+    "C:\\Users\\arif.arshad\\Desktop",
+    "C:\\Users\\arif.arshad\\Documents",
+    "C:\\Users\\arif.arshad\\Downloads",
+    "D:\\"
   ],
 
-  "git_repositories": [
-    "C:/Projects/ProjectAlpha",
-    "C:/Projects/ProjectBeta"
-  ],
-
-  "session_timeout_minutes": 30
+  "session_timeout_minutes": 30,
+  "idle_grace_seconds": 3
 }
