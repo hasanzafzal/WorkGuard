@@ -20,7 +20,7 @@ export const Chat: React.FC = () => {
       id: "init_1",
       role: "assistant",
       content:
-        "Hello Administrator. I am **WorkGuard Multi-Agent Copilot**, backed by the **Supervisor Agent** orchestrating Session Analysis, Security Intelligence, and Executive Reporting.\n\nYou can ask about employee activity, security anomalies, IDE metrics, or generate full forensic reports.",
+        "Hello Admin! I am the WorkGuard AI Copilot, I'm here to assist you.\n\nYou can ask about employee activity, security anomalies, IDE metrics, or generate full forensic reports.",
       timestamp: new Date().toISOString(),
     },
   ]);

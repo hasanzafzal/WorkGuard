@@ -6,8 +6,20 @@ import { TopBar } from "./TopBar";
 export const Layout: React.FC = () => {
   const [serverOnline, setServerOnline] = useState(true);
   const [isAutoRefresh, setIsAutoRefresh] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<string | null>(new Date().toISOString());
+
+  // Sidebar collapse state
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
+    return localStorage.getItem("workguard-sidebar-collapsed") === "true";
+  });
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed((prev) => {
+      const next = !prev;
+      localStorage.setItem("workguard-sidebar-collapsed", String(next));
+      return next;
+    });
+  };
 
   // Theme support
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -23,16 +35,25 @@ export const Layout: React.FC = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
+  // Keyboard shortcut: Cmd/Ctrl + B to toggle sidebar
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "b") {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const checkHealth = async () => {
-    setIsLoading(true);
     try {
       const res = await fetch("/health");
       setServerOnline(res.ok);
       setLastUpdated(new Date().toISOString());
     } catch {
       setServerOnline(false);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -47,25 +68,46 @@ export const Layout: React.FC = () => {
   }, [isAutoRefresh]);
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "var(--system-bg)" }}>
-      {/* Sidebar Navigation */}
+    <div
+      style={{
+        display: "flex",
+        minHeight: "100vh",
+        backgroundColor: "var(--system-bg)",
+        overflow: "hidden",
+      }}
+    >
+      {/* macOS Frosted Sidebar Navigation */}
       <Sidebar
         serverOnline={serverOnline}
         theme={theme}
         toggleTheme={toggleTheme}
+        isCollapsed={isSidebarCollapsed}
+        onToggleCollapse={toggleSidebar}
       />
 
-      {/* Main Administrative Content Area */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+      {/* Main Administrative Window Area */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+          position: "relative",
+        }}
+      >
         <TopBar
           isAutoRefresh={isAutoRefresh}
           setIsAutoRefresh={setIsAutoRefresh}
-          onManualRefresh={checkHealth}
-          isLoading={isLoading}
           lastUpdated={lastUpdated}
         />
 
-        <main style={{ flex: 1, overflowY: "auto" }}>
+        <main
+          style={{
+            flex: 1,
+            overflowY: "auto",
+            backgroundColor: "var(--system-bg)",
+          }}
+        >
           <Outlet />
         </main>
       </div>

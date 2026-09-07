@@ -1,7 +1,6 @@
 import React from "react";
 import type { LucideIcon } from "lucide-react";
 
-
 interface StatCardProps {
   title: string;
   value: string | number;
@@ -24,33 +23,69 @@ export const StatCard: React.FC<StatCardProps> = ({
   badgeColor = "blue",
 }) => {
   return (
-    <div className="glass-panel" style={{ padding: "20px" }}>
+    <div
+      className="glass-panel"
+      style={{
+        padding: "18px 20px",
+        transition: "all var(--transition-fast)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-        <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.02em" }}>
+        <span
+          style={{
+            fontSize: "0.72rem",
+            fontWeight: 600,
+            color: "var(--text-secondary)",
+            textTransform: "uppercase",
+            letterSpacing: "0.04em",
+          }}
+        >
           {title}
         </span>
         <div
           style={{
-            width: "32px",
-            height: "32px",
+            width: "30px",
+            height: "30px",
             borderRadius: "8px",
             backgroundColor: iconBg,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             color: iconColor,
+            boxShadow: `0 2px 6px ${iconBg}`,
           }}
         >
-          <Icon size={17} />
+          <Icon size={16} />
         </div>
       </div>
-      <div style={{ fontSize: "1.85rem", fontWeight: 700, margin: "10px 0 4px 0", letterSpacing: "-0.03em" }}>
+      <div
+        style={{
+          fontSize: "1.85rem",
+          fontWeight: 700,
+          margin: "10px 0 4px 0",
+          letterSpacing: "-0.035em",
+          color: "var(--text-primary)",
+        }}
+      >
         {value}
       </div>
       {(subtitle || badgeText) && (
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", color: "var(--text-tertiary)" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            fontSize: "0.74rem",
+            color: "var(--text-tertiary)",
+          }}
+        >
           {badgeText && (
-            <span className={`badge badge-${badgeColor}`} style={{ fontSize: "0.68rem", padding: "1px 6px" }}>
+            <span
+              className={`badge badge-${badgeColor}`}
+              style={{ fontSize: "0.65rem", padding: "1px 7px" }}
+            >
               {badgeText}
             </span>
           )}
