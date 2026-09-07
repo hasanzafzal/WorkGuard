@@ -56,7 +56,7 @@ def _write_metadata(metadata: list[dict]) -> None:
         raise
 
 
-def knowledge_agent(state: WorkGuardState) -> dict:
+def knowledge_agent(state: WorkGuardState) -> WorkGuardState:
     """Embed a session locally and add it to the persistent FAISS index."""
     session = state.get("session")
     if not session:

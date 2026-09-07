@@ -1,0 +1,259 @@
+/* Apple macOS / iOS Human Interface Guidelines Design System for WorkGuard Admin */
+
+:root {
+  /* System Colors - Light Mode */
+  --system-bg: #F5F5F7;
+  --system-grouped-bg: #EBEBF0;
+  --system-surface: rgba(255, 255, 255, 0.85);
+  --system-surface-solid: #FFFFFF;
+  --system-surface-elevated: #FFFFFF;
+  --system-sidebar: rgba(246, 246, 248, 0.82);
+  --system-sidebar-border: rgba(0, 0, 0, 0.08);
+
+  --apple-blue: #007AFF;
+  --apple-blue-hover: #0062CC;
+  --apple-blue-subtle: rgba(0, 122, 255, 0.1);
+  --apple-green: #34C759;
+  --apple-green-subtle: rgba(52, 199, 89, 0.12);
+  --apple-orange: #FF9500;
+  --apple-orange-subtle: rgba(255, 149, 0, 0.12);
+  --apple-red: #FF3B30;
+  --apple-red-subtle: rgba(255, 59, 48, 0.12);
+  --apple-indigo: #5856D6;
+  --apple-indigo-subtle: rgba(88, 86, 214, 0.12);
+  --apple-purple: #AF52DE;
+  --apple-teal: #30B0C7;
+  --apple-gray: #8E8E93;
+  --apple-gray-subtle: rgba(142, 142, 147, 0.12);
+
+  --text-primary: #1C1C1E;
+  --text-secondary: #636366;
+  --text-tertiary: #8E8E93;
+  --text-quaternary: #C7C7CC;
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-separator: rgba(0, 0, 0, 0.06);
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-elevated: 0 12px 36px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  --glass-blur: blur(28px) saturate(180%);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --system-bg: #0D0D11;
+  --system-grouped-bg: #16161C;
+  --system-surface: rgba(28, 28, 32, 0.85);
+  --system-surface-solid: #1C1C22;
+  --system-surface-elevated: #24242C;
+  --system-sidebar: rgba(18, 18, 22, 0.85);
+  --system-sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --apple-blue: #0A84FF;
+  --apple-blue-hover: #409CFF;
+  --apple-blue-subtle: rgba(10, 132, 255, 0.16);
+  --apple-green: #30D158;
+  --apple-green-subtle: rgba(48, 209, 88, 0.16);
+  --apple-orange: #FF9F0A;
+  --apple-orange-subtle: rgba(255, 159, 10, 0.16);
+  --apple-red: #FF453A;
+  --apple-red-subtle: rgba(255, 69, 58, 0.16);
+  --apple-indigo: #6B68FF;
+  --apple-indigo-subtle: rgba(107, 104, 255, 0.16);
+  --apple-purple: #BF5AF2;
+  --apple-teal: #40C8E0;
+  --apple-gray: #98989D;
+  --apple-gray-subtle: rgba(152, 152, 157, 0.16);
+
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1A6;
+  --text-tertiary: #6E6E73;
+  --text-quaternary: #3A3A3C;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-separator: rgba(255, 255, 255, 0.05);
+
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-elevated: 0 12px 36px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.8), 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+  background-color: var(--system-bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+code, pre {
+  font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, Monaco, monospace;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--system-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-pill {
+  background: var(--system-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+}
+
+/* Apple Buttons */
+.apple-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.apple-btn-primary {
+  background: var(--apple-blue);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
+}
+
+.apple-btn-primary:hover {
+  background: var(--apple-blue-hover);
+  box-shadow: 0 4px 14px rgba(0, 122, 255, 0.35);
+  transform: translateY(-0.5px);
+}
+
+.apple-btn-secondary {
+  background: var(--system-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.apple-btn-secondary:hover {
+  background: var(--system-grouped-bg);
+  border-color: var(--text-tertiary);
+  transform: translateY(-0.5px);
+}
+
+.apple-btn-subtle {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.apple-btn-subtle:hover {
+  background: var(--apple-gray-subtle);
+  color: var(--text-primary);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.badge-blue { background: var(--apple-blue-subtle); color: var(--apple-blue); }
+.badge-green { background: var(--apple-green-subtle); color: var(--apple-green); }
+.badge-orange { background: var(--apple-orange-subtle); color: var(--apple-orange); }
+.badge-red { background: var(--apple-red-subtle); color: var(--apple-red); }
+.badge-indigo { background: var(--apple-indigo-subtle); color: var(--apple-indigo); }
+.badge-gray { background: var(--apple-gray-subtle); color: var(--text-secondary); }
+
+/* Custom Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(142, 142, 147, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(142, 142, 147, 0.5);
+}
+
+/* Pulse animation for live status */
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.6); }
+  70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 6px rgba(52, 199, 89, 0); }
+  100% { transform: scale(0.95); opacity: 0.7; box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--apple-green);
+  animation: pulseGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Spin animation for loading indicators */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Glass sidebar with sidebar-specific variables */
+.glass-sidebar {
+  background: var(--system-sidebar);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}

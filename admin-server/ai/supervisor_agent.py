@@ -3,7 +3,7 @@
 from ai.state import WorkGuardState
 
 
-def supervisor_agent(state: WorkGuardState) -> dict:
+def supervisor_agent(state: WorkGuardState) -> WorkGuardState:
     """Initialize workflow state before specialized agents run."""
     session = state.get("session")
     if not session:

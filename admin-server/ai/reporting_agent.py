@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from ai.state import WorkGuardState
 
 
-def reporting_agent(state: WorkGuardState) -> dict:
+def reporting_agent(state: WorkGuardState) -> WorkGuardState:
     """Create one structured local report from the agent outputs."""
     session = state.get("session", {})
 
