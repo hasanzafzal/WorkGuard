@@ -69,59 +69,8 @@ Traditional enterprise security monitoring either compromises employee privacy b
 ---
 
 ## End-to-End System Architecture
+<img width="1340" height="1150" alt="Employee Security Monitoring Architecture" src="https://github.com/user-attachments/assets/dd8735ba-85c5-4a36-840a-b9a5196b8506" />
 
-```mermaid
-flowchart TB
-    subgraph Client["Employee Endpoint (Windows PC)"]
-        PM["Process Monitor\n(psutil)"] --> SPF["Static Process\nFilter"]
-        FM["Focus Monitor\n(pywin32)"] --> EQ["Shared Event\nQueue"]
-        WM["File Monitor\n(watchdog)"] --> EQ
-        SPF --> EQ
-        EQ --> SB["Session Builder"]
-        SB --> SJSON["Session JSON"]
-        SJSON --> SQLB["SQLite Durable Buffer\n(Offline Resilient)"]
-        SQLB --> ENC["AES-256-GCM\nEncryption Engine"]
-        ENC --> NC["Network Client\n(HTTP POST)"]
-    end
-
-    subgraph AdminBackend["Admin Server Backend (FastAPI)"]
-        NC -. "LAN / Wire (Encrypted)" .-> API["Admin Ingestion API\n/api/v1/sessions"]
-        API --> DEC["AES-256-GCM Decrypt\n& Authenticate"]
-        DEC --> VJSON["Verified Session\nPayload"]
-        VJSON --> NORM["Normalization &\nProcessing Pipeline"]
-        NORM --> PG[(PostgreSQL\nSystem of Record)]
-        NORM --> AD["Analysis Documents\nGenerator"]
-        AD --> ST["SentenceTransformers\n(all-MiniLM-L6-v2)"]
-        ST --> FAISS[("FAISS Vector Store\n(Semantic Index)")]
-        PG --> RULES["Deterministic Security\nRules & Anomaly Engine"]
-    end
-
-    subgraph AIAgents["Multi-Agent AI Intelligence (LangGraph + Ollama)"]
-        CHAT_API["Admin Chat API\n/api/v1/chat"] --> SUP["Supervisor Agent\n(Intent Router)"]
-        SUP --> SESS_A["Session Analysis\nAgent"]
-        SUP --> SEC_A["Security\nAgent"]
-        SUP --> KNOW_A["Knowledge\nAgent"]
-        SUP --> REP_A["Reporting\nAgent"]
-
-        SESS_A <--> OLLAMA["Local Ollama LLM\n(llama3:latest / llama2)"]
-        SEC_A <--> OLLAMA
-        KNOW_A <--> FAISS
-        REP_A <--> OLLAMA
-        SESS_A <--> PG
-        SEC_A <--> PG
-    end
-
-    subgraph Frontend["Admin Experience (React + Vite + TypeScript)"]
-        DASH["Executive Dashboard\n(Timelines & Usage)"]
-        SEC_P["Security Threat Panel\n(Triage & Alerts)"]
-        COPILOT["AI Copilot Assistant\n(Interactive Conversational Audit)"]
-    end
-
-    AdminBackend --> Frontend
-    AIAgents --> Frontend
-```
-
----
 
 ## Core Components Deep Dive
 
