@@ -1,0 +1,9 @@
+cryptography
+fastapi
+faiss-cpu
+langchain-ollama
+langgraph
+numpy
+pydantic
+sentence-transformers
+uvicorn[standard]

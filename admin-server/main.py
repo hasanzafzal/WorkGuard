@@ -16,8 +16,15 @@ from cryptography.exceptions import InvalidTag
 from fastapi import BackgroundTasks, FastAPI, HTTPException
 from pydantic import BaseModel, ConfigDict, Field
 
+from fastapi.middleware.cors import CORSMiddleware
+
 from security.encryption import decrypt_session, key_from_base64
-from ai.processor import process_verified_session
+from json_parser import parse_and_store
+from processing.pipeline import process_session
+from database.connection import get_connection
+from database.schema import ensure_processing_tables
+from api.routes import router as admin_router
+from api.chat import router as chat_router
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -25,6 +32,31 @@ RECEIVED_SESSIONS_DIR = BASE_DIR / "received_sessions"
 VERIFIED_SESSIONS_DIR = BASE_DIR / "verified_sessions"
 
 app = FastAPI(title="WorkGuard Admin Server")
+
+
+@app.on_event("startup")
+def on_startup() -> None:
+    """Ensure database tables for processing and analysis exist on startup."""
+    try:
+        conn = get_connection()
+        ensure_processing_tables(conn)
+        conn.close()
+    except Exception as exc:
+        import logging
+        logging.getLogger("uvicorn.error").warning("Could not verify processing tables on startup: %s", exc)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(admin_router)
+app.include_router(chat_router)
+
 
 
 class EncryptionPayload(BaseModel):
@@ -68,10 +100,8 @@ def get_shared_key() -> bytes:
     """Load the manually provisioned Admin/employee shared key."""
     encoded_key = os.getenv("WORKGUARD_AES_KEY_BASE64")
     if not encoded_key:
-        raise HTTPException(
-            status_code=503,
-            detail="Admin encryption key is not configured.",
-        )
+        from api.routes import get_encryption_key
+        return get_encryption_key()
 
     try:
         return key_from_base64(encoded_key)
@@ -80,6 +110,7 @@ def get_shared_key() -> bytes:
             status_code=503,
             detail="Admin encryption key is invalid.",
         ) from error
+
 
 
 def validate_decrypted_session(session: dict, payload: SessionTransmission) -> None:
@@ -144,8 +175,11 @@ def receive_session(
     """Verify and persist one encrypted employee session package."""
 
     try:
+        encryption_data = payload.encryption.model_dump()
+        # Ensure session_id is available for AES-GCM associated data (AAD)
+        encryption_data.setdefault("session_id", payload.session_id)
         decrypted_session = decrypt_session(
-            payload.encryption.model_dump(),
+            encryption_data,
             get_shared_key(),
         )
     except (InvalidTag, ValueError) as error:
@@ -171,7 +205,13 @@ def receive_session(
 
     save_json(RECEIVED_SESSIONS_DIR, filename, saved_payload)
     save_json(VERIFIED_SESSIONS_DIR, filename, saved_verified_session)
-    background_tasks.add_task(process_verified_session, decrypted_session)
+
+    # 1. Persist structured data into PostgreSQL
+    file_path = str(VERIFIED_SESSIONS_DIR / filename)
+    parse_and_store(decrypted_session, file_path=file_path)
+
+    # 2. Trigger background processing pipeline (normalisation, analytics, analysis documents)
+    background_tasks.add_task(process_session, payload.session_id)
 
     return ReceiveResponse(
         status="received",

@@ -1,6 +1,9 @@
 """LangGraph orchestration for the WorkGuard Week 2 AI pipeline."""
 
-from langgraph.graph import END, START, StateGraph
+try:
+    from langgraph.graph import END, START, StateGraph
+except ImportError:
+    END = START = StateGraph = None
 
 from ai.knowledge_agent import knowledge_agent
 from ai.reporting_agent import reporting_agent
@@ -17,7 +20,10 @@ def _route_after_supervisor(state: WorkGuardState) -> str:
 
 def build_workflow():
     """Build the fixed, supervised local agent workflow."""
+    if StateGraph is None:
+        raise ImportError("langgraph package is not available in current environment")
     workflow = StateGraph(WorkGuardState)
+
     workflow.add_node("supervisor", supervisor_agent)
     workflow.add_node("session_analysis", session_analysis_agent)
     workflow.add_node("knowledge", knowledge_agent)
@@ -43,11 +49,27 @@ def build_workflow():
 
 def run_workflow(session: dict) -> dict:
     """Run the supervised agent pipeline for one verified session."""
-    graph = build_workflow()
-    return graph.invoke(
-        {
+    try:
+        graph = build_workflow()
+        return graph.invoke(
+            {
+                "session_id": session.get("session_id", ""),
+                "session": session,
+                "errors": [],
+            }
+        )
+    except Exception as error:
+        # Deterministic sequential fallback when LangGraph engine is unavailable
+        initial_state = {
             "session_id": session.get("session_id", ""),
             "session": session,
-            "errors": [],
+            "errors": [f"LangGraph fallback activated: {error}"],
         }
-    )
+        state = {**initial_state, **supervisor_agent(initial_state)}
+        if state.get("session"):
+            state = {**state, **session_analysis_agent(state)}
+            state = {**state, **knowledge_agent(state)}
+            state = {**state, **security_agent(state)}
+        state = {**state, **reporting_agent(state)}
+        return state
+
