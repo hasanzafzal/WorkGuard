@@ -1,5 +1,18 @@
+# Local Python environments and interpreter caches
 venv/
-__pycache__/
-*.pyc
+.venv/
+.venv-workguard/
+admin-server/.venv/
+**/__pycache__/
+*.py[cod]
+
+# Local configuration and generated runtime data
 .env
 *.db
+employee-client/sessions/
+employee-client/storage/employee_buffer.db
+admin-server/received_sessions/
+admin-server/verified_sessions/
+admin-server/processed_sessions/
+admin-server/reports/
+admin-server/vector_store/

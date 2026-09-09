@@ -3,7 +3,7 @@
 from ai.state import WorkGuardState
 
 
-def security_agent(state: WorkGuardState) -> dict:
+def security_agent(state: WorkGuardState) -> WorkGuardState:
     """Report only objective data-integrity issues; no policy is assumed."""
     session = state.get("session", {})
     alerts = []

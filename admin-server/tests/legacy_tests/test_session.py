@@ -1,0 +1,806 @@
+import os
+import json
+import base64
+from pathlib import Path
+
+from dotenv import load_dotenv
+import requests
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+load_dotenv(Path(__file__).resolve().parent / ".env")
+
+key = base64.b64decode(os.environ["WORKGUARD_AES_KEY_BASE64"])
+
+session = {
+  "session_id": "sess_306d14030496",
+  "employee_id": "SYS-B56B4DEB06F6",
+  "employee_name": "AILAB_7881_W2 (arif.arshad)",
+  "session": {
+    "start_time": "2026-09-02T05:10:37.196547+00:00",
+    "end_time": "2026-09-02T05:16:59.641367+00:00",
+    "duration_seconds": 382
+  },
+  "events": [
+    {
+      "event_id": "evt_b66d43c277da",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:10:37+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_dcfe60f6b4aa",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:10:43+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_78fd67438894",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:10:46+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_59c5c2c24c74",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:12+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\test\\lung_n",
+        "total_operations": 330,
+        "operations": {
+          "modified": 330
+        },
+        "file_types": {
+          ".jpeg": 330
+        },
+        "unique_file_count": 330,
+        "period_start": "2026-09-02T05:11:03+00:00",
+        "period_end": "2026-09-02T05:11:03+00:00"
+      }
+    },
+    {
+      "event_id": "evt_37f5f5f9f89a",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:17+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\lung_n",
+        "total_operations": 329,
+        "operations": {
+          "modified": 329
+        },
+        "file_types": {
+          ".jpeg": 329
+        },
+        "unique_file_count": 329,
+        "period_start": "2026-09-02T05:11:08+00:00",
+        "period_end": "2026-09-02T05:11:08+00:00"
+      }
+    },
+    {
+      "event_id": "evt_1165f29ae452",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:22+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test\\colon_aca",
+        "total_operations": 7,
+        "operations": {
+          "modified": 7
+        },
+        "file_types": {
+          ".jpeg": 7
+        },
+        "unique_file_count": 7,
+        "period_start": "2026-09-02T05:11:13+00:00",
+        "period_end": "2026-09-02T05:11:13+00:00"
+      }
+    },
+    {
+      "event_id": "evt_188b21ec590f",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:22+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test\\colon_n",
+        "total_operations": 5,
+        "operations": {
+          "modified": 5
+        },
+        "file_types": {
+          ".jpeg": 5
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:11:15+00:00",
+        "period_end": "2026-09-02T05:11:15+00:00"
+      }
+    },
+    {
+      "event_id": "evt_8d8c4beaa6c3",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:22+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test\\lung_aca",
+        "total_operations": 5,
+        "operations": {
+          "modified": 5
+        },
+        "file_types": {
+          ".jpeg": 5
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:11:16+00:00",
+        "period_end": "2026-09-02T05:11:16+00:00"
+      }
+    },
+    {
+      "event_id": "evt_9881f25fa97c",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:25+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_8710b834864d",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:25+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_a32d990073a1",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:26+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_c590e4befa20",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:27+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test\\lung_n",
+        "total_operations": 5,
+        "operations": {
+          "modified": 5
+        },
+        "file_types": {
+          ".jpeg": 5
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:11:17+00:00",
+        "period_end": "2026-09-02T05:11:17+00:00"
+      }
+    },
+    {
+      "event_id": "evt_e14ac0f9ed06",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:27+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test\\lung_scc",
+        "total_operations": 5,
+        "operations": {
+          "modified": 5
+        },
+        "file_types": {
+          ".jpeg": 5
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:11:18+00:00",
+        "period_end": "2026-09-02T05:11:18+00:00"
+      }
+    },
+    {
+      "event_id": "evt_9e9d11762e13",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:27+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_8b9cafd18602",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:40+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_5230ad3ad87a",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:41+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_860f6c75c66e",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:42+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_9404394fa257",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:45+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_ba2d108fc020",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:46+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_3babd1161b03",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:11:46+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_0df8bde3f14c",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:11:47+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\MicroAI",
+        "total_operations": 9,
+        "operations": {
+          "modified": 9
+        },
+        "file_types": {
+          ".py": 9
+        },
+        "unique_file_count": 1,
+        "period_start": "2026-09-02T05:11:34+00:00",
+        "period_end": "2026-09-02T05:11:39+00:00"
+      }
+    },
+    {
+      "event_id": "evt_b64bd4e5562f",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:02+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\MicroAI",
+        "total_operations": 7,
+        "operations": {
+          "modified": 7
+        },
+        "file_types": {
+          ".py": 7
+        },
+        "unique_file_count": 1,
+        "period_start": "2026-09-02T05:11:50+00:00",
+        "period_end": "2026-09-02T05:11:53+00:00"
+      }
+    },
+    {
+      "event_id": "evt_95dcf6aab3a3",
+      "event_type": "application_started",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:12:25+00:00",
+      "data": {
+        "pid": 19736,
+        "process_name": "python.exe",
+        "executable": "C:\\Python313\\python.exe"
+      }
+    },
+    {
+      "event_id": "evt_a4543ef02078",
+      "event_type": "application_stopped",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:12:27+00:00",
+      "data": {
+        "pid": 19736,
+        "process_name": "python.exe",
+        "executable": "C:\\Python313\\python.exe"
+      }
+    },
+    {
+      "event_id": "evt_e857fbd83fd8",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:27+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\MicroAI",
+        "total_operations": 11,
+        "operations": {
+          "modified": 11
+        },
+        "file_types": {
+          ".py": 11
+        },
+        "unique_file_count": 1,
+        "period_start": "2026-09-02T05:12:08+00:00",
+        "period_end": "2026-09-02T05:12:19+00:00"
+      }
+    },
+    {
+      "event_id": "evt_3ca2923ee35f",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:12:31+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_83cd1ea6c9c3",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:32+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\colon_aca",
+        "total_operations": 14,
+        "operations": {
+          "modified": 14
+        },
+        "file_types": {
+          ".jpeg": 14
+        },
+        "unique_file_count": 7,
+        "period_start": "2026-09-02T05:12:24+00:00",
+        "period_end": "2026-09-02T05:12:24+00:00"
+      }
+    },
+    {
+      "event_id": "evt_3f471f018e02",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:32+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\colon_n",
+        "total_operations": 10,
+        "operations": {
+          "modified": 10
+        },
+        "file_types": {
+          ".jpeg": 10
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:12:24+00:00",
+        "period_end": "2026-09-02T05:12:24+00:00"
+      }
+    },
+    {
+      "event_id": "evt_214435c91351",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:32+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\lung_aca",
+        "total_operations": 10,
+        "operations": {
+          "modified": 10
+        },
+        "file_types": {
+          ".jpeg": 10
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:12:25+00:00",
+        "period_end": "2026-09-02T05:12:25+00:00"
+      }
+    },
+    {
+      "event_id": "evt_4ee6308ae70a",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:32+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\lung_n",
+        "total_operations": 10,
+        "operations": {
+          "modified": 10
+        },
+        "file_types": {
+          ".jpeg": 10
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:12:25+00:00",
+        "period_end": "2026-09-02T05:12:25+00:00"
+      }
+    },
+    {
+      "event_id": "evt_b585f7f4e396",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:32+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\lung_scc",
+        "total_operations": 10,
+        "operations": {
+          "modified": 10
+        },
+        "file_types": {
+          ".jpeg": 10
+        },
+        "unique_file_count": 5,
+        "period_start": "2026-09-02T05:12:25+00:00",
+        "period_end": "2026-09-02T05:12:26+00:00"
+      }
+    },
+    {
+      "event_id": "evt_12100b1cd2e4",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:12:34+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_b7bc2bf7eb21",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:42+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\lung_aca",
+        "total_operations": 325,
+        "operations": {
+          "modified": 325
+        },
+        "file_types": {
+          ".jpeg": 325
+        },
+        "unique_file_count": 325,
+        "period_start": "2026-09-02T05:12:33+00:00",
+        "period_end": "2026-09-02T05:12:34+00:00"
+      }
+    },
+    {
+      "event_id": "evt_5a98445e98cb",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:12:47+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\colon_aca",
+        "total_operations": 493,
+        "operations": {
+          "modified": 493
+        },
+        "file_types": {
+          ".jpeg": 493
+        },
+        "unique_file_count": 493,
+        "period_start": "2026-09-02T05:12:38+00:00",
+        "period_end": "2026-09-02T05:12:40+00:00"
+      }
+    },
+    {
+      "event_id": "evt_051e7bf39305",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:12:55+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_333b316a302e",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:12:55+00:00",
+      "data": {
+        "pid": 9732,
+        "process_name": "photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_8f2ef285af3d",
+      "event_type": "application_started",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:12:55+00:00",
+      "data": {
+        "pid": 9732,
+        "process_name": "photolaunch.exe",
+        "executable": "C:\\Users\\arif.arshad\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.28032\\office6\\photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_3fbb2d02891d",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:12:57+00:00",
+      "data": {
+        "pid": 9732,
+        "process_name": "photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_1f845f0d1d88",
+      "event_type": "application_started",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:12:59+00:00",
+      "data": {
+        "pid": 33052,
+        "process_name": "photolaunch.exe",
+        "executable": "C:\\Users\\arif.arshad\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.28032\\office6\\photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_6b064fee7bcb",
+      "event_type": "application_stopped",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:12:59+00:00",
+      "data": {
+        "pid": 9732,
+        "process_name": "photolaunch.exe",
+        "executable": "C:\\Users\\arif.arshad\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.28032\\office6\\photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_f37a06ae5b6f",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:00+00:00",
+      "data": {
+        "pid": 33052,
+        "process_name": "photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_4e983b05c6ad",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:01+00:00",
+      "data": {
+        "pid": 33052,
+        "process_name": "photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_405ebc09c6ef",
+      "event_type": "application_started",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:13:02+00:00",
+      "data": {
+        "pid": 32904,
+        "process_name": "photolaunch.exe",
+        "executable": "C:\\Users\\arif.arshad\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.28032\\office6\\photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_099dfb3a300a",
+      "event_type": "application_stopped",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:13:02+00:00",
+      "data": {
+        "pid": 33052,
+        "process_name": "photolaunch.exe",
+        "executable": "C:\\Users\\arif.arshad\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.28032\\office6\\photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_b1fb0129b8fe",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:02+00:00",
+      "data": {
+        "pid": 32904,
+        "process_name": "photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_c5025be93d53",
+      "event_type": "application_stopped",
+      "source": "psutil",
+      "timestamp": "2026-09-02T05:13:04+00:00",
+      "data": {
+        "pid": 32904,
+        "process_name": "photolaunch.exe",
+        "executable": "C:\\Users\\arif.arshad\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.28032\\office6\\photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_99ea0836cecd",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:04+00:00",
+      "data": {
+        "pid": 32904,
+        "process_name": "photolaunch.exe"
+      }
+    },
+    {
+      "event_id": "evt_141c36a9156e",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:05+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_04d703cd83c5",
+      "event_type": "directory_activity",
+      "source": "watchdog",
+      "timestamp": "2026-09-02T05:13:07+00:00",
+      "data": {
+        "directory": "C:\\Users\\arif.arshad\\Desktop\\uglify_test_result\\colon_aca",
+        "total_operations": 3,
+        "operations": {
+          "modified": 3
+        },
+        "file_types": {
+          ".jpeg": 3
+        },
+        "unique_file_count": 3,
+        "period_start": "2026-09-02T05:12:54+00:00",
+        "period_end": "2026-09-02T05:13:01+00:00"
+      }
+    },
+    {
+      "event_id": "evt_b00e1228e39a",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:08+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_850027c00b30",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:13:11+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_be43dc960f9e",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:14:21+00:00",
+      "data": {
+        "pid": 0,
+        "process_name": "Desktop"
+      }
+    },
+    {
+      "event_id": "evt_ba1a0890fbfe",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:14:21+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_6aad9c96c568",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:16:51+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_41ffd09f112d",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:16:53+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_b73738d9fea6",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:16:56+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_986d28383cfd",
+      "event_type": "application_focused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:16:57+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    },
+    {
+      "event_id": "evt_c9b2eec34351",
+      "event_type": "application_unfocused",
+      "source": "pywin32",
+      "timestamp": "2026-09-02T05:16:59+00:00",
+      "data": {
+        "pid": 4776,
+        "process_name": "Code - Insiders.exe"
+      }
+    }
+  ],
+  "focus_summary": {
+    "Code - Insiders.exe": 224.0,
+    "Desktop": 131.0,
+    "photolaunch.exe": 5.0
+  },
+  "metadata": {
+    "schema_version": "1.0",
+    "created_at": "2026-09-02T05:17:00.642441+00:00"
+  }
+}
+
+nonce = os.urandom(12)
+ciphertext = AESGCM(key).encrypt(
+    nonce,
+    json.dumps(session, separators=(",", ":")).encode("utf-8"),
+    session["session_id"].encode("utf-8"),
+)
+
+payload = {
+    "session_id": "sess_306d14030496",
+    "employee_id": "SYS-B56B4DEB06F6",
+    "created_at": "2026-09-02T05:17:00Z",
+    "encryption": {
+        "algorithm": "AES-256-GCM",
+        "nonce": base64.b64encode(nonce).decode("utf-8"),
+        "ciphertext": base64.b64encode(ciphertext).decode("utf-8"),
+    }
+}
+
+resp = requests.post("http://localhost:8000/api/v1/sessions", json=payload, timeout=30)
+print(resp.status_code)
+print(resp.json())

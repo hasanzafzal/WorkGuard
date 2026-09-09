@@ -1,16 +1,16 @@
-from typing import TypedDict
+from typing import Any, TypedDict
 
 
 class WorkGuardState(TypedDict, total=False):
     """Data passed between WorkGuard's LangGraph agents."""
 
-    session: dict
+    session: dict[str, Any]
     session_id: str
 
-    session_analysis: dict
-    knowledge: dict
-    security: dict
-    report: dict
+    session_analysis: dict[str, Any]
+    knowledge: dict[str, Any]
+    security: dict[str, Any]
+    report: dict[str, Any]
 
     workflow_stage: str
 

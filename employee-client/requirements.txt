@@ -1,0 +1,5 @@
+cryptography
+psutil
+pywin32
+requests
+watchdog

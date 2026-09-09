@@ -1,0 +1,10 @@
+{
+  "name": "workguard-admin-server",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "install:frontend": "npm --prefix frontend install",
+    "postinstall": "npm --prefix frontend install"
+  }
+}
